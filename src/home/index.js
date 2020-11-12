@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     background: "black",
     fontSize: 20,
     padding: 5,
-    width: 300,
+    width: 500,
     color: "white",
     outline: "none",
   },
@@ -57,10 +57,11 @@ export default function Home() {
     fetcher
   );
   const handleSearch = () => {
+    setSelectedDrink("");
     setSearching(searchTerm);
     setSearchTerm("");
   };
-
+  console.log("DATA", data);
   return (
     <div className={classes.container}>
       <h2 className={classes.title}>Search for your favorite drinks!</h2>
@@ -76,20 +77,27 @@ export default function Home() {
           Search
         </button>
       </div>
-      <div className={classes.dataBox}>
-        {error && <div>ERRRRROORRRR.</div>}
-        {!data && <div>LOADING......</div>}
-        {data &&
-          data.drinks.map((data, index) => (
-            <div
-              className={classes.dataItem}
-              key={index}
-              onClick={() => setSelectedDrink(data.strDrink)}
-            >
-              {data.strDrink}
+      {selectedDrink === "" && (
+        <div className={classes.dataBox}>
+          {error && <div>ERRRRROORRRR.</div>}
+          {!data && <div>LOADING......</div>}
+          {data &&
+            data?.drinks?.map((data, index) => (
+              <div
+                className={classes.dataItem}
+                key={index}
+                onClick={() => setSelectedDrink(data.strDrink)}
+              >
+                {data.strDrink}
+              </div>
+            ))}
+          {data?.drinks === null && (
+            <div>
+              Your search did not return any results...Please try again.
             </div>
-          ))}
-      </div>
+          )}
+        </div>
+      )}
       {selectedDrink !== "" && <SingleDrink drink={selectedDrink} />}
     </div>
   );
