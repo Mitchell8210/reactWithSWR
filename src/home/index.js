@@ -13,6 +13,9 @@ const useStyles = makeStyles({
   searchBar: {
     padding: 20,
     border: "1px solid black",
+    "@media(max-width: 700px)": {
+      textAlign: "center",
+    },
   },
   input: {
     background: "black",
@@ -21,6 +24,9 @@ const useStyles = makeStyles({
     width: 500,
     color: "white",
     outline: "none",
+    "@media(max-width: 700px)": {
+      width: "90%",
+    },
   },
   button: {
     fontSize: 20,
@@ -29,6 +35,9 @@ const useStyles = makeStyles({
     color: "white",
     cursor: "pointer",
     outline: "none",
+    "@media(max-width: 700px)": {
+      width: "90%",
+    },
   },
   dataBox: {
     padding: 20,
