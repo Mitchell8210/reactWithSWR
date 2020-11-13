@@ -41,6 +41,51 @@ const useStyles = makeStyles({
     fontSize: 20,
     marginBottom: 10,
   },
+  ingredientsTitle: {
+    fontSize: 22,
+    textDecoration: "underline",
+    "@media(max-width: 700px)": {
+      fontSize: 18,
+    },
+  },
+  singleIngredient: {
+    display: "flex",
+    border: "1px solid #f2a365",
+    padding: 3,
+  },
+  ingredientName: {
+    width: 100,
+  },
+  ingredientMeasurement: {
+    marginLeft: "20%",
+    // textAlign: "center",
+  },
+  glassType: {
+    fontSize: 18,
+    display: "flex",
+    flexDirection: "column",
+    marginBottom: 10,
+    "@media(max-width: 700px)": {
+      fontSize: 15,
+    },
+  },
+  glass: {
+    fontSize: 22,
+    textDecoration: "underline",
+    marginBottom: 10,
+    "@media(max-width: 700px)": {
+      fontSize: 18,
+      display: "flex",
+    },
+  },
+  directions: {
+    fontSize: 22,
+    textDecoration: "underline",
+    marginBottom: 10,
+    "@media(max-width: 700px)": {
+      fontSize: 18,
+    },
+  },
 });
 
 export default function SingleDrink(props) {
@@ -129,17 +174,24 @@ export default function SingleDrink(props) {
           <div className={classes.isAlcoholic}>
             This drink is {drinkData.strAlcoholic}*
           </div>
-          <div className={classes.glassType}>{drinkData.strGlass}</div>
+          <div className={classes.glassType}>
+            <span className={classes.glass}>Recommended Glass</span>{" "}
+            {drinkData.strGlass}
+          </div>
           <div className={classes.instructions}>
+            <p className={classes.directions}>Directions</p>
             {drinkData.strInstructions}
           </div>
           <div className={classes.ingredients}>
+            <p className={classes.ingredientsTitle}>
+              Ingredients & Measurements
+            </p>
             {ingredients.map((item, index) => (
               <div key={index}>
                 {item.ingredient !== null && (
                   <div className={classes.singleIngredient}>
                     <div className={classes.ingredientName}>
-                      {item.ingredient}
+                      {item.ingredient} :
                     </div>
                     <div className={classes.ingredientMeasurement}>
                       {item.measurement}

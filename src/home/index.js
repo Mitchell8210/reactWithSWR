@@ -6,6 +6,7 @@ import SingleDrink from "./SingleDrink";
 const useStyles = makeStyles({
   container: {
     color: "white",
+    marginBottom: 100,
   },
   title: {
     textAlign: "center",
